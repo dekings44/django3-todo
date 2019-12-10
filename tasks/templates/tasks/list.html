@@ -1,0 +1,44 @@
+<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+/>
+
+<style>
+	body {
+		width: fit-content;
+		margin: 20px auto;
+	}
+</style>
+
+<div>
+	<h3>Todos</h3>
+
+	<form method="POST" action="/" class="ui form">
+		<div class=" ui field action input">
+			{% csrf_token %} {{form.title}}
+			<input type="submit" name="Create Task" class="ui primary button" />
+		</div>
+	</form>
+
+	{% for task in tasks %}
+
+	<div class="ui segments">
+		<div class="ui segment">
+			<p>
+				<font style="vertical-align: inherit;"
+					><font style="vertical-align: inherit;">
+						{% if task.complete == True %}
+						<strike>{{ task }}</strike>
+						{% else %}
+						<span>{{task}}</span>
+						{% endif %}
+						<a href="{% url 'update' task.id %}">Update</a>
+						<a href="{% url 'delete' task.id %}">Delete</a>
+					</font>
+				</font>
+			</p>
+		</div>
+	</div>
+
+	{% endfor %}
+</div>
