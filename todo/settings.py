@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mytodo',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'kingsley05013',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -123,3 +123,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'

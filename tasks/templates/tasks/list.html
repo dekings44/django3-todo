@@ -1,7 +1,4 @@
-<link
-	rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
 
 <style>
 	body {
@@ -16,7 +13,12 @@
 	<form method="POST" action="/" class="ui form">
 		<div class=" ui field action input">
 			{% csrf_token %} {{form.title}}
+			{% if form.title %}
 			<input type="submit" name="Create Task" class="ui primary button" />
+			{% else %}
+			<input type="submit" name="Update Task" class="ui primary basic button" />
+			{{ form.complete }}
+			{% endif %}
 		</div>
 	</form>
 
@@ -25,8 +27,8 @@
 	<div class="ui segments">
 		<div class="ui segment">
 			<p>
-				<font style="vertical-align: inherit;"
-					><font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">
+					<font style="vertical-align: inherit;">
 						{% if task.complete == True %}
 						<strike>{{ task }}</strike>
 						{% else %}
